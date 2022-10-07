@@ -1,3 +1,16 @@
+async function getFacts(){
+    return new Promise((resolve) => {
+    fetch("https://catfact.ninja/facts")
+    .then(resultat => resultat.json())
+    .then(resultat => {
+        resolve(resultat.data);
+    })
+})
+
+}
+
+
+
 async function getBreeds() {
     return new Promise((resolve) => {
         fetch("https://catfact.ninja/breeds?limit=50")
@@ -12,12 +25,26 @@ async function getBreeds() {
     return breeds.length
     
 }
+
+function lengthFacts(facts){
+    return facts.length 
+}
 async function onInit(){
     let breeds = await getBreeds();
     console.log(breeds);
 
+    let facts = await getFacts();
+    console.log(facts);
+
     let longeur =lengthArray(breeds)
     console.log(longeur)
+    document.getElementById("breed").innerHTML = longeur;
+
+    let longeurFacts =lengthFacts(facts)
+    console.log(longeurFacts)
+    document.getElementById("anecdote").innerHTML = longeurFacts;
+
+
     
     let countries = getCountries(breeds);
     console.log(countries);
