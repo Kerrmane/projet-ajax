@@ -11,7 +11,7 @@ async function getBreeds() {
 
 async function onInit(){
     let breeds = await getBreeds();
-    var length = Object.keys(myObj).length;
-    console.log(length(breeds));
+    let length = breeds.length
+    console.log(length)
 }
 onInit();
