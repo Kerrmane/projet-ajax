@@ -33,6 +33,8 @@ async function onInit(){
     let breeds = await getBreeds();
     console.log(breeds);
 
+    addCountriesToSelect(countries)
+
     let facts = await getFacts();
     console.log(facts);
 
@@ -60,6 +62,8 @@ async function onInit(){
 
     let origine = getOrigine(breeds);
     console.log(origine);
+
+
 }
 function getCountries(breeds){
     
@@ -91,6 +95,16 @@ function getPattern (breeds){
     breeds.forEach(breed => pattern.push(breed.pattern))
     return pattern ;
     
+}
+function addCountriesToSelect(countries){
+    let select = document.querySelector('#country')
+    countries.forEach(country => {
+        let option = document.createElement('option')
+        option.value = country 
+        option.textContent= country 
+        select.appendChild(option)
+    })
+
 }
  
 onInit();
